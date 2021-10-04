@@ -19,9 +19,7 @@ public:
     AccelStepper accelStepper;
 
     Motor(int stepPin, int dirPin, int limitPin, int stepsPerUnit) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
-    };
 
-    Motor(int stepPin, int dirPin, int stepsPerUnit) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
     };
 
     void setup() {
@@ -44,7 +42,7 @@ public:
     }
 
     void moveTo(double distance) {
-        accelStepper.moveTo(stepsPerUnit * distance);
+        accelStepper.moveTo(int(stepsPerUnit * distance));
         accelStepper.runSpeedToPosition();
     };
 
