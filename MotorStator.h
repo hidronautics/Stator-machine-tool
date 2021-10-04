@@ -1,0 +1,4 @@
+#ifndef MOTORSTATOR_H
+#define MOTORSTATOR_H
+
+#endif // MOTORSTATOR_H
