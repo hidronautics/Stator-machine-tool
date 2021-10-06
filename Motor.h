@@ -14,11 +14,11 @@ public:
     int stepPin;
     int dirPin;
     int limitPin;
-    int stepsPerUnit;
+    int stepsPerMm;
 
     AccelStepper accelStepper;
 
-    Motor(int stepPin, int dirPin, int limitPin, int stepsPerUnit) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
+    Motor(int stepPin, int dirPin, int limitPin, int stepsPerMm) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
 
     };
 
@@ -33,7 +33,7 @@ public:
         accelStepper.setAcceleration(300000000);
 
         while(digitalRead(limitPin) == 1) {
-            accelStepper.moveTo(accelStepper.currentPosition() + (stepsPerUnit * -0.3));
+            accelStepper.moveTo(accelStepper.currentPosition() + (stepsPerMm * -0.3));
             accelStepper.runSpeedToPosition();
         };
         accelStepper.setCurrentPosition(0);
@@ -42,7 +42,7 @@ public:
     }
 
     void moveTo(double distance) {
-        accelStepper.moveTo(int(stepsPerUnit * distance));
+        accelStepper.moveTo(int(stepsPerMm * distance));
         accelStepper.runSpeedToPosition();
     };
 

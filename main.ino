@@ -1,5 +1,6 @@
 #include "Motor.h"
 #include "MotorStator.h"
+#include "MotorExtruder.h"
 
 #include <AccelStepper.h>
 #include <MultiStepper.h>
@@ -32,10 +33,9 @@ Motor table(TABLE_STEP_PIN,
             TABLE_LIMIT_PIN,
             TABLE_STEPS_PER_MM);
 
-Motor extruder(EXTRUDER_STEP_PIN,
-               EXTRUDER_DIR_PIN,
-               0,
-               EXTRUDER_STEPS_PER_MM);
+MotorExtruder extruder(EXTRUDER_STEP_PIN,
+                       EXTRUDER_DIR_PIN,
+                       EXTRUDER_STEPS_PER_MM);
 
 MotorStator stator(STATOR_STEP_PIN,
                    STATOR_DIR_PIN,
@@ -54,32 +54,16 @@ void setup() {
     steppers.addStepper(extruder.accelStepper);
     steppers.addStepper(stator.accelStepper);
 
-//    carriage(CARRIAGE_STEP_PIN,
-//                         CARRIAGE_DIR_PIN,
-//                         CARRIAGE_LIMIT_PIN,
-//                         CARRIAGE_STEPS_PER_MM);
-//
-//    table(TABLE_STEP_PIN,
-//                      TABLE_DIR_PIN,
-//                      TABLE_LIMIT_PIN,
-//                      TABLE_STEPS_PER_MM);
-//
-//    stator = new MotorStator(EXTRUDER_STEP_PIN,
-//                             EXTRUDER_DIR_PIN,
-//                             EXTRUDER_STEPS_PER_MM);
-//
-//    extruder = new Motor(STATOR_STEP_PIN,
-//                         STATOR_DIR_PIN,
-//                         STATOR_STEPS_PER_360);
-
     driveEnable();
+    
     table.setup();
     carriage.setup();
+    extruder.setup();
+    stator.setup();
 
     table.setHome();
     carriage.setHome();
-
-
+    
     long positions[2];
     positions[0] = 30000;
     positions[1] = 10000;
