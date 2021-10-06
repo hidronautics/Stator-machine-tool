@@ -1,4 +1,5 @@
 #include "Mechanics.h"
+#include "SerialClient.h"
 
 Mechanics mechanics;
 
