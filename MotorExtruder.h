@@ -16,8 +16,8 @@ public:
 
     AccelStepper accelStepper;
 
-    MotorExtruder(int stepPin, int dirPin, int stepsPerMm) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
-
+    MotorExtruder(int stepPin, int dirPin, int stepsPerMm) :
+            accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
     };
 
     void setup() {
@@ -30,4 +30,5 @@ public:
         accelStepper.runSpeedToPosition();
     };
 };
+
 #endif // MOTOREXTRUDOR_H

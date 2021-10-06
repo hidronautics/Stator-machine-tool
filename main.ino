@@ -1,4 +1,5 @@
-  #include "Mechanics.h"
+#include "Mechanics.h"
+
 Mechanics mechanics;
 
 void setup() {
@@ -6,7 +7,7 @@ void setup() {
 
     mechanics.table.setHome();
     mechanics.carriage.setHome();
-    
+
     long positions[2];
     positions[0] = 30000;
     positions[1] = 10000;
@@ -16,5 +17,5 @@ void setup() {
 }
 
 void loop() {
-    
+
 }

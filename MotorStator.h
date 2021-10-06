@@ -13,11 +13,12 @@ public:
     int stepPin;
     int dirPin;
     int limitPin;
-
-    AccelStepper accelStepper;
     int stepPer360;
 
-    MotorStator(int stepPin, int dirPin, int stepPer360) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
+    AccelStepper accelStepper;
+
+    MotorStator(int stepPin, int dirPin, int stepPer360) :
+            accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
 
     };
 
@@ -32,4 +33,5 @@ public:
     };
 
 };
+
 #endif // MOTORSTATOR_H

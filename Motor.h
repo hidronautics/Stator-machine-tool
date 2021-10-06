@@ -18,8 +18,8 @@ public:
 
     AccelStepper accelStepper;
 
-    Motor(int stepPin, int dirPin, int limitPin, int stepsPerMm) : accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
-
+    Motor(int stepPin, int dirPin, int limitPin, int stepsPerMm) :
+            accelStepper(MOTOR_INTERFACE_TYPE, stepPin, dirPin) {
     };
 
     void setup() {
@@ -32,7 +32,7 @@ public:
     void setHome() {
         accelStepper.setAcceleration(300000000);
 
-        while(digitalRead(limitPin) == 1) {
+        while (digitalRead(limitPin) == 1) {
             accelStepper.moveTo(accelStepper.currentPosition() + (stepsPerMm * -0.3));
             accelStepper.runSpeedToPosition();
         };
